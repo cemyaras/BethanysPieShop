@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BethanysPieShop.Models
 {
@@ -15,5 +12,6 @@ namespace BethanysPieShop.Models
         public string ImageUrl { get; set; }
         public string ImageThumbnailUrl { get; set; }
         public bool IsPieOfTheWeek { get; set; }
+        public bool IsInStock { get; set; }
     }
 }
