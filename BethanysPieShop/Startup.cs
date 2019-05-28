@@ -18,13 +18,12 @@ namespace BethanysPieShop
 
         public void ConfigureServices(IServiceCollection services)
         {
-
-
-            services.AddTransient<IPieRepository, PieRepository>();
-
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             //services.AddSingleton<> belirtilen type için singleton olayı
             //services.AddScoped per request it will allways return same instance but as soon as the request out of scope instance is removed, and with bla bla
+
+            services.AddTransient<IPieRepository, PieRepository>();
+            services.AddTransient<IFeedBackRepository, FeedbackRepository>();
 
             services.AddMvc();
         }
@@ -35,6 +34,7 @@ namespace BethanysPieShop
             app.UseDeveloperExceptionPage();
             app.UseStatusCodePages();
             app.UseStaticFiles();
+            app.UseAuthentication();
 
             app.UseMvc(routes =>
             {
